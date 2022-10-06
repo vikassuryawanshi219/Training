@@ -1,0 +1,4 @@
+com\training\model\Student.class
+com\training\action\StudentAction.class
+com\training\model\Employee.class
+com\training\action\EmployeeAction.class

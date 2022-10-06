@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<constant name="struts.devmode" value="true"></constant>
+	<package name="studentdemo" extends="struts-default">
+
+		<!-- Configure global results -->
+
+		<global-results>
+			<result name="exception">/techerror.jsp </result>
+			<result name="error">/error.jsp</result>
+		</global-results>
+
+		<!-- handle global exception -->
+		<global-exception-mappings>
+			<exception-mapping result="exception"
+				exception="java.lang.Exception"></exception-mapping>
+			<exception-mapping result="error"
+				exception="java.lang.NullPointerException"></exception-mapping>
+		</global-exception-mappings>
+
+
+		<action name="">
+			<result>/index.jsp</result>
+		</action>
+		<action name="studform"
+			class="com.studentapp.action.StudentAction" method="display">
+			<interceptor-ref name="logging"></interceptor-ref>
+			<result name="none">/studentformpage.jsp</result>
+			<result name="input">/studentformpage.jsp</result>
+		</action>
+		<!-- handle exception in action class -->
+		<action name="register"
+			class="com.studentapp.action.StudentAction" method="execute">
+			<exception-mapping result="error"
+				exception="java.lang.NumberFormatException"></exception-mapping>
+			<result name="success">/success.jsp</result>
+			<result name="error">/studentformpage.jsp</result>
+			<result name="input">/studentformpage.jsp</result>
+		</action>
+
+	</package>
+
+
+</struts>
+	
+	
+	
