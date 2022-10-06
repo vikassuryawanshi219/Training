@@ -1,0 +1,11 @@
+p{
+    background-color: aqua;
+    border: 2px solid;
+    letter-spacing: 5px;
+}
+h1{
+    text-transform: uppercase;
+}
+h2{
+    color: brown;
+}
