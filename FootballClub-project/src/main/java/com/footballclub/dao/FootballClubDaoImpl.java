@@ -16,7 +16,7 @@ import com.footballclub.model.FootballClub;
 public class FootballClubDaoImpl implements IFootballClubDao {
 
 	public List<FootballClub> findAll() {
-		
+		// TODO Auto-generated method stub
 		return showAllFootballClub();
 	}
 
@@ -69,7 +69,6 @@ public class FootballClubDaoImpl implements IFootballClubDao {
 	
 	
 	private List<FootballClub> showAllFootballClub(){
-		
 		return Arrays.asList(
 				new FootballClub("PSG","Messi","Center Forward",30,75000),
 				new FootballClub("Real Madrid","Ronaldo","Center Forward",7,55000),
