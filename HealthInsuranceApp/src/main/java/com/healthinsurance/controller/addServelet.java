@@ -1,7 +1,6 @@
-package com.movieapp.controller;
+package com.healthinsurance.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,20 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.movieapp.service.ILoginService;
-import com.movieapp.service.LogineServiceImpl;
+import com.healthapp.model.Plan;
 
 /**
- * Servlet implementation class LoginServelet
+ * Servlet implementation class addServelet
  */
-@WebServlet("/login")
-public class LoginServelet extends HttpServlet {
+@WebServlet("/addServelet")
+public class addServelet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServelet() {
+    public addServelet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,22 +31,28 @@ public class LoginServelet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
-		PrintWriter out=response.getWriter();
-	    
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
 		
-		ILoginService loginService =new LogineServiceImpl()
-;
-		boolean result=loginService.validateUsername(username, password);
-		if(result) {
-		request.setAttribute("username", username);
-		
-		RequestDispatcher dispatcher=request.getRequestDispatcher("success.jsp");
-		dispatcher.forward(request, response);
-	} else {
-		response.sendRedirect("index.jsp");
-	}
+	String planName=request.getParameter("planName");
+	String brand =request.getParameter("brand");
+	String coverage=request.getParameter("coverage");
+	String category=request.getParameter("category");
+	double sumInsured=Double.parseDouble(request.getParameter("sumInsured"));
+	//create a plan object
+	
+	Plan plan=new Plan();
+	plan.setPlanName(planName);
+	plan.setBrand(brand);
+	plan.setCoverage(coverage);
+	plan.setCategory(category);
+	plan.setSumInsured(sumInsured);
+	
+	request.setAttribute("plan", plan);
+
+	RequestDispatcher dispatcher=request.getRequestDispatcher("success.jsp");
+	dispatcher.forward(request, response);
+	
+	
+	
 	}
 
 	/**

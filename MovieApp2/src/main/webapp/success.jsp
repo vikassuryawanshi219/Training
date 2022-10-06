@@ -7,13 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="login" >
-Enter Name<input type ="text" name="username"><br>
-Enter Password<input type="password" name="password"><br>
-<input type ="submit" value= "login"><br>
-
-
-</form>
-
+<%
+String username=(String)  request.getAttribute("username");
+out.print("welcome "+username+"<br>");
+%>
 </body>
 </html>

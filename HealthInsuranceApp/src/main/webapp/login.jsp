@@ -7,13 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="login" >
+<h1>Login</h1>
+<form action="loginServelet">
+
 Enter Name<input type ="text" name="username"><br>
 Enter Password<input type="password" name="password"><br>
 <input type ="submit" value= "login"><br>
 
-
 </form>
-
 </body>
 </html>

@@ -7,13 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="login" >
-Enter Name<input type ="text" name="username"><br>
-Enter Password<input type="password" name="password"><br>
-<input type ="submit" value= "login"><br>
-
-
-</form>
-
+<h1>Admin Dashboard</h1>
+<div>
+<a href="addPlan.jsp">Add Plan</a><br>
+<a href="updatePlan.jsp">Update Plan</a><br><br>
+<a href="deletePlan.jsp">Delete Plan</a><br>
+</div>
 </body>
 </html>

@@ -1,29 +1,26 @@
-package com.movieapp.controller;
+package com.vfislk.com;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.stream.Stream;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.movieapp.service.ILoginService;
-import com.movieapp.service.LogineServiceImpl;
-
 /**
- * Servlet implementation class LoginServelet
+ * Servlet implementation class RegisterServelet
  */
-@WebServlet("/login")
-public class LoginServelet extends HttpServlet {
+@WebServlet("/register")
+public class RegisterServelet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServelet() {
+    public RegisterServelet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,22 +30,24 @@ public class LoginServelet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
-		PrintWriter out=response.getWriter();
-	    
+		PrintWriter out= response.getWriter();
+		
 		String username = request.getParameter("username");
-		String password = request.getParameter("password");
+//		String studentId = request.getParameter("studentId");
+//		int id =Integer.parseInt(studentId);
+		int id=Integer.parseInt(request.getParameter("studentId"));
+		String city =request.getParameter("city");
+		String language = request.getParameter("language");
+		String hobbies[] = request.getParameterValues("hobby");
 		
-		ILoginService loginService =new LogineServiceImpl()
-;
-		boolean result=loginService.validateUsername(username, password);
-		if(result) {
-		request.setAttribute("username", username);
+		out.print("<html><body>");
+		out.print("Welcome "+username);
+		out.print(" student id is "+id);
+		out.print(" city is "+city);
+		out.print(" language is "+language);
+		Stream.of(hobbies).forEach(out::print);
 		
-		RequestDispatcher dispatcher=request.getRequestDispatcher("success.jsp");
-		dispatcher.forward(request, response);
-	} else {
-		response.sendRedirect("index.jsp");
-	}
+		out.print("</body></html>");
 	}
 
 	/**

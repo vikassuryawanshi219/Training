@@ -7,10 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="login" >
-Enter Name<input type ="text" name="username"><br>
-Enter Password<input type="password" name="password"><br>
-<input type ="submit" value= "login"><br>
+<div style="text-align: right">
+<a href="login.jsp">Login</a>
+</div>
+<h1>Welcome to Health Insurance</h1>
+<form >
+<input type ="text" name="choice">
+<input type ="submit" value="search">
 
 
 </form>
